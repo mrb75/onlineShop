@@ -144,8 +144,8 @@ class RequestLog(models.Model):
         User, on_delete=models.CASCADE, related_name='requestLogs', null=True)
     ip_address = models.GenericIPAddressField()
     referer = models.CharField(max_length=255, null=True)
-    user_agent = models.CharField(max_length=100, null=True)
-    url = models.CharField(max_length=100, null=True)
+    user_agent = models.CharField(max_length=255, null=True)
+    url = models.CharField(max_length=255, null=True)
     method = models.CharField(max_length=10)
     date_created = models.DateTimeField(auto_now_add=True)
 
@@ -155,3 +155,23 @@ class RequestLog(models.Model):
     @property
     def create_date_time(self):
         return datetime.datetime.strftime(self.date_created, '%Y/%m/%d %H:%M'), _(jdatetime.datetime.fromgregorian(date=self.date_created).strftime('%Y/%m/%d %H:%M'))
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(User, models.CASCADE,
+                             related_name='notifications')
+    is_news = models.BooleanField(default=False)
+    text = models.TextField(max_length=1000)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['date_created']
+
+    @property
+    def create_date_time(self):
+        return datetime.datetime.strftime(self.date_created, '%Y/%m/%d %H:%M'), _(jdatetime.datetime.fromgregorian(date=self.date_created).strftime('%Y/%m/%d %H:%M'))
+
+    @property
+    def modify_date_time(self):
+        return datetime.datetime.strftime(self.date_modified, '%Y/%m/%d %H:%M'), _(jdatetime.datetime.fromgregorian(date=self.date_modified).strftime('%Y/%m/%d %H:%M'))

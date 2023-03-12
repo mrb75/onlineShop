@@ -23,10 +23,10 @@ def debug_task(self):
     print(f'Request: {self.request!r}')
 
 
-app.conf.beat_schedule = {
-    'change_ban_status_everyday': {
-        'task': 'change_ban_status',
-        'schedule': crontab(minute=0, hour=0),
-        'args': (),
-    },
-}
+# app.conf.beat_schedule = {
+#     'change_ban_status_everyday': {
+#         'task': 'change_ban_status',
+#         'schedule': crontab(minute=0, hour=0),
+#         'args': (),
+#     },
+# }

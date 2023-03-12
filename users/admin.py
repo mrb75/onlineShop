@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Address, Country, Province, City, RequestLog
+from .models import User, Address, Country, Province, City, RequestLog, Notification
 # Register your models here.
 
 
@@ -20,6 +20,7 @@ admin.site.register(Address)
 admin.site.register(Country)
 admin.site.register(Province)
 admin.site.register(RequestLog)
+admin.site.register(Notification)
 admin.site.register(City, CityAdmin)
 
 admin.site.register(User, UserAdmin)
