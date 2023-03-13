@@ -1,10 +1,6 @@
 .env
 files/
-Dockerfile
-docker-compose.yml
 data/
-docker-entrypoint.sh
-celerybeat-schedule
 migrations.sh
 start_env.sh
 cities.sql
